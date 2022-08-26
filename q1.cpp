@@ -23,23 +23,17 @@ int main() {
     }
 
 
-    // reversing with alternate high and low elements
-    for (int i=1; i<=length-1; i++) {
-        if (arr[i]>arr[i-1] && arr[i]>arr[i+1]) {
-            i += 2;
-        }
-        else {
-            if (arr[i] < arr[i-1]) {
-                int temp = arr[i];
-                arr[i] = arr[i-1];
-                arr[i-1] = arr[i];
-            }
-            else if (arr[i] < arr[i+1]) {
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = arr[i];
-            }
-            i += 2;
+    // rearranging with alternate high and low elements
+    for (int i=1; i<length; i+=2) {
+        if (arr[i - 1] > arr[i]) {
+            int temp = arr[i];
+            arr[i] = arr[i-1];
+            arr[i-1] = temp;
+        } 
+        else if ((i+1 < length) && (arr[i + 1] > arr[i])) {
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
         }
     }
 
